@@ -108,6 +108,8 @@ export class FeeLevels {
     coinInfo: CoinInfo;
 
     levels: FeeLevel[];
+    // longTermFeeRate is used by `@trezor/utxo-lib` composeTx module
+    longTermFeeRate?: number;
 
     blocks: Blocks = [];
 
@@ -209,6 +211,8 @@ export class FeeLevels {
                     }
                 });
             }
+            // use value from the last (lowest) fee level
+            this.longTermFeeRate = Number(this.levels[this.levels.length - 1].feeLimit);
         } catch (error) {
             // do not throw
         }
