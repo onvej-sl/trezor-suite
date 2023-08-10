@@ -179,6 +179,10 @@ const parseBitcoinNetworksJson = (json: any) => {
             wif: 0, // doesn't matter, for type correctness
         };
 
+        // TODO: this is here because of fixed condition in `@trezor/utxo-lib`. allowed dust amount can be greater **OR** equal than dustThreshold.
+        // TODO: change needs to be addressed in `trezor-common` submodule (set DOGE dust_limit from 99999999 to 100000000)
+        const dustLimit = shortcut === 'DOGE' ? 100000000 : coin.dust_limit;
+
         bitcoinNetworks.push({
             type: 'bitcoin',
             // address_type in Network
@@ -198,7 +202,7 @@ const parseBitcoinNetworksJson = (json: any) => {
             curveName: coin.curve_name,
             // decred not used
             defaultFees: coin.default_fee_b,
-            dustLimit: coin.dust_limit,
+            dustLimit,
             forceBip143: coin.force_bip143,
             // forkid in Network
             // github not used

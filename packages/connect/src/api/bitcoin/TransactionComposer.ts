@@ -166,12 +166,16 @@ export class TransactionComposer {
 
         const enhancement = {
             baseFee,
+            dustThreshold: coinInfo.dustLimit,
             floorBaseFee: false,
             dustOutputFee: 0,
         };
 
         // DOGE changed fee policy and requires:
         if (coinInfo.shortcut === 'DOGE') {
+            // TODO: this is here because of fixed condition in `@trezor/utxo-lib`. allowed dust amount can be greater **OR** equal than dustThreshold.
+            // TODO: change needs to be addressed in `trezor-common` submodule (set DOGE dust_limit from 99999999 to 100000000)
+            enhancement.dustThreshold = 100000000;
             enhancement.dustOutputFee = 1000000; // 0.01 DOGE for every output lower than dust (dust = 0.01 DOGE)
         }
 
@@ -186,7 +190,6 @@ export class TransactionComposer {
             network: coinInfo.network,
             changeId,
             changeAddress: changeAddress.address,
-            dustThreshold: coinInfo.dustLimit,
             ...enhancement,
         });
     }
