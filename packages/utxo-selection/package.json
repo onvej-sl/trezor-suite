@@ -1,0 +1,27 @@
+{
+    "name": "@trezor/utxo-selection",
+    "version": "1.0.0",
+    "author": "Trezor <info@trezor.io>",
+    "homepage": "https://github.com/trezor/trezor-suite/tree/develop/packages/algorithms",
+    "description": "Implementation of coinjoin utxo selection algorithm.",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/trezor/trezor-suite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/trezor/trezor-suite/issues"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
+    "main": "./lib/index.js",
+    "scripts": {
+        "lint:js": "yarn g:eslint '**/*.{ts,tsx,js}'",
+        "test:unit": "jest --verbose -c jest.config.js",
+        "type-check": "tsc --build tsconfig.json"
+    },
+    "dependencies": {
+        "@trezor/branch-and-bound": "workspace:*"
+    },
+    "devDependencies": {
+        "v8-profiler-next": "^1.9.0"
+    }
+}
