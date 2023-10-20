@@ -1,0 +1,12 @@
+* Find and resolve all TODOs (`grep -R TODO packages/branch-and-bound/`, `grep -R TODO packages/coin-selection/`).
+* Find and consider implementing all optimization suggestions (`grep -R 'Optimization suggestion' packages/branch-and-bound/`, `grep -R 'Optimization suggestion' packages/coin-selection/`).
+* Better distribute classes into files.
+* Fix all linter errors. In particular the following:
+  * iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations
+  * File has too many classes (6). Maximum allowed is 1
+* Integrate the coin selection algorithm to coin send dialog.
+* Check auxiliary files such as the following:
+  * jest.config.js
+  * package.json
+  * tsconfig.json
+* Decide what to do with the recursive implementation of the branch and bound algorithm.
