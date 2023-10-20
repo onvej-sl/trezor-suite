@@ -1,0 +1,24 @@
+{
+    "name": "@trezor/branch-and-bound",
+    "version": "1.0.0",
+    "author": "Trezor <info@trezor.io>",
+    "homepage": "https://github.com/trezor/trezor-suite/tree/develop/packages/algorithms",
+    "description": "Implementation of branch and bound algorithm.",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/trezor/trezor-suite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/trezor/trezor-suite/issues"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
+    "main": "./src/index.ts",
+    "scripts": {
+        "lint:js": "yarn g:eslint '**/*.{ts,tsx,js}'",
+        "test:unit": "jest --verbose -c jest.config.js",
+        "type-check": "tsc --build tsconfig.json"
+    },
+    "dependencies": {
+        "@collectable/red-black-tree": "^5.1.1"
+    }
+}
